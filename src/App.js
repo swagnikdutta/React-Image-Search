@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 import './App.css';
 
 import UserInput from './UserInput';
@@ -37,10 +37,21 @@ class App extends Component{
 		.then((response)=>{
 
 			var itemsArray = response.data.items;
-			var links = itemsArray.map(item => item.link);
-			this.setState({
-				imageLinks: links
-			});
+			// var links = itemsArray.map(item => item.link);
+			// this.setState({
+			// 	imageLinks: links
+			// });
+
+			var listItems = itemsArray.map((item) => 
+				<li className="tile" key={item.link}>
+					<img src={item.link} alt="Loading"/>
+				</li>
+			);
+			
+			ReactDOM.render(
+				<ul className="unordered-list">{listItems}</ul>,
+				document.getElementById('holder')
+			);
 
 		})
 		.catch((e)=>{
@@ -51,16 +62,10 @@ class App extends Component{
     render(){
         return(
         	
-        		<div className="input-component-wrapper">
-	                <UserInput onKeywordEntered={this.handleKeyword} />
-	                {
-	                	this.state.imageLinks.forEach((i)=>{
-	                		// works!
-	                		console.log(i);
-
-	                	})
-	                }
-	            </div>
+    		<div className="input-component-wrapper">
+                <UserInput onKeywordEntered={this.handleKeyword} />
+                
+            </div>
         	
         );
     }

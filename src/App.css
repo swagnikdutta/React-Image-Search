@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+
+*{
+	box-sizing: border-box;
+	font-family: 'Quicksand';
+}
+
 #root{
 	/*border: 1px solid lightgrey;*/
 }
@@ -17,7 +24,8 @@ input{
 	border-radius: 0;
 	margin-right: 10px;
 	-webkit-appearance: none;
-	border: 2px solid #aca095;
+	border: 2px solid #9E9E9E;
+	font-family: 'Quicksand';
 }
 
 input:focus{
@@ -27,7 +35,7 @@ input:focus{
 }
 
 input:not(:focus){
-	width: 15%;
+	width: 20%;
 	transition: width .25s;	
 }
 
@@ -38,14 +46,15 @@ button{
 	font-size: 16px;
 	border-radius: 0;
 	-webkit-appearance: none;
-	border: 2px solid #aca095;
+	
+	font-weight: bold;
+	border: 2px solid #9E9E9E;
 }
 
 button:enabled{
 	color: black;
 	cursor: pointer;
 	border: 2px solid black;
-	background-color: 
 }
 
 button:focus{
@@ -54,4 +63,23 @@ button:focus{
 
 .yo{
 	border: 1px solid pink;
+}
+
+.unordered-list{
+	list-style: none;
+	overflow: hidden;
+	border: 1px solid lightgrey;
+	padding: 5px;
+}
+
+.tile{
+	/*width: 150px;
+	height: 100px;*/
+	float: left;
+	margin: 0 20px 20px 0;
+}
+
+img{
+	width: 150px;
+	height: 100px;
 }
