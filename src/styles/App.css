@@ -6,5 +6,29 @@
 }
 
 #root{
-	/*border: 1px solid lightgrey;*/
+	
+}
+
+.input-component-wrapper{
+	text-align: center;
+	padding: 40px 0;
+}
+
+.tile-component-wrapper{
+	overflow: hidden;
+}
+
+.loadmore-button-wrapper{
+	text-align: center;
+	padding: 40px 0;
+}
+
+.loadmore-button-wrapper > button{
+	padding: 10px 40px;
+	box-shadow: 4px 6px 8px lightgrey;
+}
+
+.loadmore-button-wrapper > button:active{
+	padding: 10px 40px;
+	box-shadow: none;
 }

@@ -12,15 +12,20 @@ const axios = require('axios');
 class App extends Component{
 	constructor(props){
 		super(props);
+
 		this.state = {
 			start: 1,
-			imageLinks: []
+			imageLinks: [],
+			searchQuery: 'apples' // default
 		}
 
-		this.handleKeyword = this.handleKeyword.bind(this);
+		this.fetchImages = this.fetchImages.bind(this);		
+		this.fetchMoreImages = this.fetchMoreImages.bind(this);
+		this.makeAPICall = this.makeAPICall.bind(this);
 	}
 
-	handleKeyword(search_term){
+	makeAPICall(){
+
 		// not mine
 		// var url = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyD6cZJdS4fjnrRzvM-WlEBeXKCEaBN9bbc&cx=017725526660795934517:_kokdupgki4';
 
@@ -29,7 +34,7 @@ class App extends Component{
 
 		axios.get(url, {
 			params: {
-				q: search_term,
+				q: this.state.searchQuery,
 				start: this.state.start,
 				num: 8,
 				safe: 'off',
@@ -38,32 +43,63 @@ class App extends Component{
 		})
 		.then((response)=>{
 
-			var itemsArray = response.data.items;
-			var links = itemsArray.map(item => item.link);
+			var links = response.data.items.map(item => item.link);
 			this.setState({
-				imageLinks: links
+				imageLinks: this.state.imageLinks.concat(links)
 			});
 
 		})
 		.catch((e)=>{
 			console.log(e);
 		});
+
 	}
+
+	fetchImages(search_term){
+		console.log(search_term);
+		// For every new query, set the 'searchQuery' variable and clear 'imageLinks' array
+		this.setState({
+			imageLinks: [],
+			searchQuery: search_term
+		},()=>{
+			this.makeAPICall();
+		});
+	}
+
+	fetchMoreImages(){
+		
+		// Fetch more images of the same searchQuery, just increase the start parameter.
+		this.setState((prevState, props) => ({
+			start: prevState.start + 8
+		}), ()=>{
+			this.makeAPICall();
+		});
+		
+	}
+
 
     render(){
         return(
         	<div>
+
 	    		<div className="input-component-wrapper">
-	                <UserInput onKeywordEntered={this.handleKeyword} />
+	                <UserInput onKeywordEntered={this.fetchImages} />
 				</div>
-				<div>
+
+				<div className="tile-component-wrapper">
 	                {
 						this.state.imageLinks.map( (link) => {
-							
 							return <Tile key={link} source={link} />
 						})
 	                }
 	            </div>
+
+	            <div className="loadmore-button-wrapper" 
+	            	 style={{display: this.state.imageLinks.length !== 0 ? '' : 'none'}}>
+
+	            	<button onClick={this.fetchMoreImages}>Load more</button>
+	            </div>
+
         	</div>
         );
     }
