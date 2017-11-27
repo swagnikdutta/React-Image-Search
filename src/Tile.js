@@ -2,25 +2,28 @@ import React, { Component } from 'react';
 // import ReactDOM from 'react-dom';
 import './styles/Tile.css';
 
+
 class Tile extends Component{
-	// constructor(){
-	// 	super();
 
-	// 	this.handleTileClick = this.handleTileClick.bind(this);
-	// }
+	constructor(props){
+		super(props);
+		this.onTileClicked = this.onTileClicked.bind(this);
+	}
 
-	// handleTileClick(e){
-	// 	console.log(e);
-	// }
+	onTileClicked(imageSource){
+
+		this.props.onTileClick(imageSource);
+	}
 	
 	render(){
 		return(
-			<div className="tile-container" >
-				<img src={this.props.source} alt="Loading"/>
+			<div className="tile-container" onClick={() => { this.onTileClicked(this.props.source) }}>
+				<img src={this.props.source} alt="Loading" />
 			</div>
 		);
 	}
-	
 }
 
 export default Tile;
+
+

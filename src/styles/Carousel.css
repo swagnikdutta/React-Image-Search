@@ -1,0 +1,43 @@
+.carousel-wrapper{
+	
+	overflow-y: hidden;
+	height: 100vh;
+}
+
+.carousel-wrapper > div{
+	float: left;
+	height: 100%;
+	background-color: rgba(0,0,0,0.86);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/*border: 1px solid skyblue;*/
+}
+
+.navigate-left, .navigate-right{
+	width: 20%;
+}
+
+.image-container{
+	width: 60%;
+	padding: 110px 10px;
+
+}
+
+.image-container > img{
+	max-height: 100%;
+	max-width: 100%;
+	object-fit: contain-cover;
+	border: 8px solid #F1E7B6;
+}
+
+.ion-chevron-left, .ion-chevron-right{
+	color: rgba(255,255,255,0.2);
+	font-size: 5em;
+	cursor: pointer;
+}
+
+.ion-chevron-left:hover, .ion-chevron-right:hover{
+	color: rgba(255,255,255,0.8);
+}

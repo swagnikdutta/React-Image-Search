@@ -5,6 +5,10 @@
 	font-family: 'Quicksand';
 }
 
+body{
+	margin: 0;
+}
+
 #root{
 	
 }
@@ -32,3 +36,16 @@
 	padding: 10px 40px;
 	box-shadow: none;
 }
+
+/********************************/
+
+#parent{
+	/*border: 2px solid skyblue;*/
+
+}
+
+#hook{
+	/*border: 2px solid black;*/
+
+}
+
