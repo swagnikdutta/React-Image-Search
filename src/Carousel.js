@@ -8,6 +8,7 @@ class Carousel extends Component{
 		super();
 		this.showNext = this.showNext.bind(this);
 		this.showPrev = this.showPrev.bind(this);
+		this.closeIconClicked = this.closeIconClicked.bind(this);
 	}
 
 	showPrev(imageSrc){
@@ -16,6 +17,10 @@ class Carousel extends Component{
 
 	showNext(imageSrc){
 		this.props.showNextImage(imageSrc);
+	}
+
+	closeIconClicked(){
+		this.props.onCloseCarousel();
 	}
 
 	render(){
@@ -33,6 +38,7 @@ class Carousel extends Component{
 
 				<div className="navigate-right">
 					<i className="ion-chevron-right" onClick={() => {this.showNext(this.props.src)}}></i>
+					<i className="ion-close-round" onClick={this.closeIconClicked}></i>
 				</div>
 			</div>
 		);

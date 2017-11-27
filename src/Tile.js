@@ -11,7 +11,6 @@ class Tile extends Component{
 	}
 
 	onTileClicked(imageSource){
-
 		this.props.onTileClick(imageSource);
 	}
 	

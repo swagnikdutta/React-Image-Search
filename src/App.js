@@ -17,18 +17,17 @@ class App extends Component{
 
 		this.state = {
 			start: 1,
-			imageLinks: [],
-			// imageLinks: [
-			// 	"http://cdn.history.com/sites/2/2017/03/GettyImages-157278376.jpg",
-			// 	"https://news.nationalgeographic.com/content/dam/news/2016/10/17/jia-jia/01-panda-jia-jia.jpg",
-			// 	"http://cdn.history.com/sites/2/2015/04/HITH-When-Pandamonium-Hit-US-Getty460935005.jpg",
-			// 	"https://i.ytimg.com/vi/4NJlUribp3c/maxresdefault.jpg",
-			// 	"https://www.nationalgeographic.com/content/dam/magazine/rights-exempt/2016/08/pandas/cover.jpg",
-			// 	"http://cdn.cnn.com/cnnnext/dam/assets/170210101016-bao-bao-panda-final-checkup-orig-jh-00002619-full-169.jpg",
-			// 	"https://www.nationalgeographic.com/content/dam/magazine/rights-exempt/2016/08/departments/panda-mania-12.jpg",
-			// 	"https://blogs.scientificamerican.com/thoughtful-animal/files/2014/01/red-panda-and-baby.jpg"
-			// ],
-			carouselVisible: false,
+			// imageLinks: [],
+			imageLinks: [
+				"http://cdn.history.com/sites/2/2017/03/GettyImages-157278376.jpg",
+				"https://news.nationalgeographic.com/content/dam/news/2016/10/17/jia-jia/01-panda-jia-jia.jpg",
+				"http://cdn.history.com/sites/2/2015/04/HITH-When-Pandamonium-Hit-US-Getty460935005.jpg",
+				"https://i.ytimg.com/vi/4NJlUribp3c/maxresdefault.jpg",
+				"https://www.nationalgeographic.com/content/dam/magazine/rights-exempt/2016/08/pandas/cover.jpg",
+				"http://cdn.cnn.com/cnnnext/dam/assets/170210101016-bao-bao-panda-final-checkup-orig-jh-00002619-full-169.jpg",
+				"https://www.nationalgeographic.com/content/dam/magazine/rights-exempt/2016/08/departments/panda-mania-12.jpg",
+				"https://blogs.scientificamerican.com/thoughtful-animal/files/2014/01/red-panda-and-baby.jpg"
+			],
 			currentCarouselImage: '',
 			searchQuery: 'apples' // default
 		}
@@ -39,6 +38,7 @@ class App extends Component{
 		this.handleTileClick = this.handleTileClick.bind(this);
 		this.showPrevImage = this.showPrevImage.bind(this);
 		this.showNextImage = this.showNextImage.bind(this);
+		this.closeCarousel = this.closeCarousel.bind(this);
 	}
 
 	makeAPICall(){
@@ -69,8 +69,8 @@ class App extends Component{
 		.catch((e)=>{
 			console.log(e);
 		});
-
 	}
+
 
 	fetchImages(search_term){
 		
@@ -83,6 +83,7 @@ class App extends Component{
 		});
 	}
 
+
 	fetchMoreImages(){
 		
 		// Fetch more images of the same searchQuery, just increase the start parameter.
@@ -93,12 +94,13 @@ class App extends Component{
 		});	
 	}
 
+
 	handleTileClick(imageSource){
 		this.setState({
 			currentCarouselImage: imageSource,
-			carouselVisible: !this.state.carouselVisible
 		});
 	}
+
 
 	showPrevImage(imageSrc){
 		
@@ -115,6 +117,7 @@ class App extends Component{
 		});
 	}
 
+
 	showNextImage(imageSrc){
 
 		var newImageIndex;
@@ -127,6 +130,13 @@ class App extends Component{
 		})
 		this.setState({
 			currentCarouselImage: this.state.imageLinks[newImageIndex]
+		});
+	}
+	
+
+	closeCarousel(){
+		this.setState({
+			currentCarouselImage: ''
 		});
 	}
 	
@@ -159,7 +169,10 @@ class App extends Component{
 		            {
 						this.state.currentCarouselImage === '' ? 
 							null : 
-							<Carousel src={this.state.currentCarouselImage} showPrevImage={this.showPrevImage} showNextImage={this.showNextImage} />
+							<Carousel src={this.state.currentCarouselImage} 
+									showPrevImage={this.showPrevImage} 
+									showNextImage={this.showNextImage} 
+									onCloseCarousel={this.closeCarousel} />
 		            }
 	            </div>
 

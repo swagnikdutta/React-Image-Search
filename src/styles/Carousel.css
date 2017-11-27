@@ -17,12 +17,13 @@
 
 .navigate-left, .navigate-right{
 	width: 20%;
+	/*border: 1px solid skyblue;*/
+	position: relative;
 }
 
 .image-container{
 	width: 60%;
 	padding: 110px 10px;
-
 }
 
 .image-container > img{
@@ -40,4 +41,14 @@
 
 .ion-chevron-left:hover, .ion-chevron-right:hover{
 	color: rgba(255,255,255,0.8);
+}
+
+.ion-close-round{
+	color: rgba(255,255,255,0.2);
+	font-size: 3em;
+	cursor: pointer;
+	position: absolute;
+	top: 5px;
+	right: 30px;
+	margin: 0;
 }
