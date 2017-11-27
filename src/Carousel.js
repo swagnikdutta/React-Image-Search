@@ -28,18 +28,16 @@ class Carousel extends Component{
 		return(
 			<div className="carousel-wrapper">
 
-				<div className="navigate-left">
-					<i className="ion-chevron-left" onClick={() => {this.showPrev(this.props.src)}}></i>
-				</div>
+				<i className="ion-chevron-left" onClick={() => {this.showPrev(this.props.src)}}></i>
 				
 				<div className="image-container">
 					<img src={this.props.src} alt="Loading Carousel"/>
 				</div>
 
-				<div className="navigate-right">
-					<i className="ion-chevron-right" onClick={() => {this.showNext(this.props.src)}}></i>
-					<i className="ion-close-round" onClick={this.closeIconClicked}></i>
-				</div>
+				<i className="ion-chevron-right" onClick={() => {this.showNext(this.props.src)}}></i>
+					
+				<i className="ion-close-round" onClick={this.closeIconClicked}></i>
+				
 			</div>
 		);
 	}

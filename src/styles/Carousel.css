@@ -7,22 +7,20 @@
 .carousel-wrapper > div{
 	float: left;
 	height: 100%;
-	background-color: rgba(0,0,0,0.86);
+	background-color: rgba(0,0,0,0.9);
 
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/*border: 1px solid skyblue;*/
 }
 
 .navigate-left, .navigate-right{
 	width: 20%;
-	/*border: 1px solid skyblue;*/
 	position: relative;
 }
 
 .image-container{
-	width: 60%;
+	width: 100%;
 	padding: 110px 10px;
 }
 
@@ -31,12 +29,26 @@
 	max-width: 100%;
 	object-fit: contain-cover;
 	border: 8px solid #F1E7B6;
+
 }
 
-.ion-chevron-left, .ion-chevron-right{
-	color: rgba(255,255,255,0.2);
+.ion-chevron-left{
+	color: rgba(255,255,255,0.5);
 	font-size: 5em;
 	cursor: pointer;
+	position: absolute;
+	top: 40%;
+	left: 50px;
+} 
+
+.ion-chevron-right{
+	color: rgba(255,255,255,0.5);
+	font-size: 5em;
+	cursor: pointer;
+	position: fixed;
+	right: 0;
+	top: 40%;
+	right: 50px;
 }
 
 .ion-chevron-left:hover, .ion-chevron-right:hover{
@@ -44,8 +56,8 @@
 }
 
 .ion-close-round{
-	color: rgba(255,255,255,0.2);
-	font-size: 3em;
+	color: rgba(255,255,255,0.5);
+	font-size: 4em;
 	cursor: pointer;
 	position: absolute;
 	top: 5px;
